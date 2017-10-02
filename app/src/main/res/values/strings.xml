@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AppNotas</string>
+    <string name="textView3">App Para el calulo de Notas</string>
+    <string name="tv">Pantalla de Bienvenida</string>
+    <string name="txtTitulo">Calculo De Notas</string>
+    <string name="txtDes">Desarrollo Web</string>
+    <string name="txt1">Nota 1</string>
+    <string name="txt2">Nota 2</string>
+    <string name="txt3">Nota 3</string>
+    <string name="txtNota">Definitiva</string>
+    <string name="txtProgRes">Prog. Restricciones</string>
+    <string name="txtSeg">Seguridad</string>
+    <string name="bntPromedio">Promedio</string>
+    <string name="bntAcerca">Acerca De</string>
+    <string name="textView2">Universidad Mariana</string>
+    <string name="textView5">Dario Alexander Paz</string>
+    <string name="button3">Regresar</string>
+    <string name="aviso">El promedio de todas las materias es</string>
+</resources>

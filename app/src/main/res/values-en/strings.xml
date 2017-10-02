@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppNotas</string>
+    <string name="textView3">App For Note Calculation</string>
+    <string name="tv">My Welcome Screen</string>
+    <string name="txtTitulo">Calculation Of Notes</string>
+    <string name="txtDes">Web Developtmen</string>
+    <string name="txt1">Note 1</string>
+    <string name="txt2">Note 2</string>
+    <string name="txt3">Note 3</string>
+    <string name="txtNota">Final</string>
+    <string name="txtProgRes">Prog. Restrictions</string>
+    <string name="txtSeg">Security</string>
+    <string name="bntPromedio">Average</string>
+    <string name="bntAcerca">About</string>
+    <string name="textView2">Mariana University</string>
+    <string name="textView5">Dario Alexander Paz</string>
+    <string name="button3">To Return</string>
+    <string name="aviso">The average of all subjects is</string>
+</resources>
