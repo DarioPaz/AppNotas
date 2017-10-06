@@ -16,4 +16,5 @@
     <string name="textView5">Dario Alexander Paz</string>
     <string name="button3">Regresar</string>
     <string name="aviso">El promedio de todas las materias es</string>
+    <string name="error">El valor de la nota no puede ser mayor a 5 o menor que 0</string>
 </resources>

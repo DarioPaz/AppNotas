@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity_Cont extends AppCompatActivity {
 
-    private EditText edt11,edt12,edt13,edt21,edt22,edt23,edt31,edt32,edt33;
+    private EditText edt1,edt2,edt3,edt21,edt22,edt23,edt31,edt32,edt33;
     private TextView txt1,txt2,txt3;
 
     @Override
@@ -24,16 +24,22 @@ public class MainActivity_Cont extends AppCompatActivity {
 
 
         //Calculo para Materia 1
+
         SharedPreferences prefe1=getSharedPreferences("Desarrollo", Context.MODE_PRIVATE);
-        edt11=(EditText)findViewById(R.id.edt11);
-        edt11.setText(prefe1.getString("p","0"));
-        edt12=(EditText)findViewById(R.id.edt12);
-        edt12.setText(prefe1.getString("s","0"));
-        edt13=(EditText)findViewById(R.id.edt13);
-        edt13.setText(prefe1.getString("t","0"));
+
+        edt1=(EditText)findViewById(R.id.edt1);
+        edt1.setText(prefe1.getString("p","0"));
+
+        edt2=(EditText)findViewById(R.id.edt2);
+        edt2.setText(prefe1.getString("s","0"));
+
+        edt3=(EditText)findViewById(R.id.edt3);
+        edt3.setText(prefe1.getString("t","0"));
+
         txt1=(TextView)findViewById(R.id.txt1);
         txt1.setText(prefe1.getString("resultado","0"));
-        edt11.addTextChangedListener(new TextWatcher() {
+
+        edt1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -50,65 +56,37 @@ public class MainActivity_Cont extends AppCompatActivity {
 
                     SharedPreferences prefe1=getSharedPreferences("Desarrollo",Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor=prefe1.edit();
-                    String t11=edt11.getText().toString();
-                    editor.putString("p", edt11.getText().toString());
-                    String t12=edt12.getText().toString();
-                    String t13=edt13.getText().toString();
 
-                    double n11=Double.valueOf(t11);
-                    double n12=Double.valueOf(t12);
-                    double n13=Double.valueOf(t13);
+                    String t1=edt1.getText().toString();
+                    editor.putString("p", edt1.getText().toString());
+                    String t2=edt2.getText().toString();
+                    String t3=edt3.getText().toString();
 
-                    double cal=(((n11+n12)/2)*0.6)+(n13*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    double n1=Double.valueOf(t1);
+                    double n2=Double.valueOf(t2);
+                    double n3=Double.valueOf(t3);
 
-                    editor.commit();
-                    txt1.setText(resul);
-                } catch (Exception e) {
+                    if(n1>=0 && n1<=6){
+                        double cal=(((n1+n2)/2)*0.6)+(n3*0.4);
+                        String resul=Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                }}
+                        editor.commit();
+                        txt1.setText(resul);
 
-        });
-        edt12.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-
-                    SharedPreferences prefe1=getSharedPreferences("Desarrollo",Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor=prefe1.edit();
-                    String t11=edt11.getText().toString();
-                    String t12=edt12.getText().toString();
-                    editor.putString("s", edt12.getText().toString());
-                    String t13=edt13.getText().toString();
-
-                    double n11=Double.valueOf(t11);
-                    double n12=Double.valueOf(t12);
-                    double n13=Double.valueOf(t13);
-
-                    double cal=(((n11+n12)/2)*0.6)+(n13*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
-
-                    editor.commit();
-                    txt1.setText(resul);
                 } catch (Exception e) {
 
                 }}
 
         });
 
-        edt13.addTextChangedListener(new TextWatcher() {
+        edt2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -125,21 +103,72 @@ public class MainActivity_Cont extends AppCompatActivity {
 
                     SharedPreferences prefe1=getSharedPreferences("Desarrollo",Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor=prefe1.edit();
-                    String t11=edt11.getText().toString();
-                    String t12=edt12.getText().toString();
-                    String t13=edt13.getText().toString();
-                    editor.putString("t", edt12.getText().toString());
+                    String t1=edt1.getText().toString();
+                    String t2=edt2.getText().toString();
+                    editor.putString("s", edt2.getText().toString());
+                    String t3=edt3.getText().toString();
 
-                    double n11=Double.valueOf(t11);
-                    double n12=Double.valueOf(t12);
-                    double n13=Double.valueOf(t13);
+                    double n1=Double.valueOf(t1);
+                    double n2=Double.valueOf(t2);
+                    double n3=Double.valueOf(t3);
 
-                    double cal=(((n11+n12)/2)*0.6)+(n13*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resulado", resul);
+                    if(n2>=0 && n2<=6) {
+                        double cal = (((n1 + n2) / 2) * 0.6) + (n3 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt1.setText(resul);
+                        editor.commit();
+                        txt1.setText(resul);
+                    }
+                    else {
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+
+                    }
+                } catch (Exception e) {
+
+                }}
+
+        });
+
+        edt3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+
+                    SharedPreferences prefe1=getSharedPreferences("Desarrollo",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=prefe1.edit();
+                    String t1=edt1.getText().toString();
+                    String t2=edt2.getText().toString();
+                    String t3=edt3.getText().toString();
+                    editor.putString("t", edt2.getText().toString());
+
+                    double n1=Double.valueOf(t1);
+                    double n2=Double.valueOf(t2);
+                    double n3=Double.valueOf(t3);
+
+                    if(n3>=0 && n3<=6) {
+                        double cal = (((n1 + n2) / 2) * 0.6) + (n3 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resulado", resul);
+
+                        editor.commit();
+                        txt1.setText(resul);
+                    }
+                    else {
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
                 } catch (Exception e) {
 
                 }}
@@ -184,12 +213,19 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n31>=0 && n31<=6){
+                        double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
+                        String resul=Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt2.setText(resul);
+                        editor.commit();
+                        txt2.setText(resul);
+                    }
+                    else {
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
+
                 } catch (Exception e) {
 
                 }}
@@ -223,12 +259,19 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n32>=0 && n32<=6) {
+                        double cal = (((n31 + n32) / 2) * 0.6) + (n33 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt2.setText(resul);
+                        editor.commit();
+                        txt2.setText(resul);
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
+
                 } catch (Exception e) {
 
                 }}
@@ -262,12 +305,19 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n33>=0 && n33<=6) {
+                        double cal = (((n31 + n32) / 2) * 0.6) + (n33 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt2.setText(resul);
+                        editor.commit();
+                        txt2.setText(resul);
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
+
                 } catch (Exception e) {
 
                 }}
@@ -316,12 +366,18 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n31>=0 && n31<=6) {
+                        double cal = (((n31 + n32) / 2) * 0.6) + (n33 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt3.setText(resul);
+                        editor.commit();
+                        txt3.setText(resul);
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
                 } catch (Exception e) {
 
                 }}
@@ -358,12 +414,18 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n32>=0 && n32<=6) {
+                        double cal = (((n31 + n32) / 2) * 0.6) + (n33 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt3.setText(resul);
+                        editor.commit();
+                        txt3.setText(resul);
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
                 } catch (Exception e) {
 
                 }}
@@ -401,12 +463,18 @@ public class MainActivity_Cont extends AppCompatActivity {
                     double n32=Double.valueOf(t32);
                     double n33=Double.valueOf(t33);
 
-                    double cal=(((n31+n32)/2)*0.6)+(n33*0.4);
-                    String resul=Double.toString(cal);
-                    editor.putString("resultado", resul);
+                    if (n33>=0 && n33<=6) {
+                        double cal = (((n31 + n32) / 2) * 0.6) + (n33 * 0.4);
+                        String resul = Double.toString(cal);
+                        editor.putString("resultado", resul);
 
-                    editor.commit();
-                    txt3.setText(resul);
+                        editor.commit();
+                        txt3.setText(resul);
+                    }
+                    else{
+                        Toast not= Toast.makeText(MainActivity_Cont.this,getString(R.string.error), Toast.LENGTH_LONG);
+                        not.show();
+                    }
                 } catch (Exception e) {
 
                 }}
@@ -430,8 +498,8 @@ public class MainActivity_Cont extends AppCompatActivity {
 
         double total = (n1 + n2 + n3) / 3;
 
-        Toast notificacion = Toast.makeText(this, getString(R.string.aviso)+" "+String.format("%.2f",total), Toast.LENGTH_LONG);
-        notificacion.show();
+        Toast not = Toast.makeText(MainActivity_Cont.this, getString(R.string.aviso)+" "+String.format("%.2f",total), Toast.LENGTH_LONG);
+        not.show();
 
     }
 

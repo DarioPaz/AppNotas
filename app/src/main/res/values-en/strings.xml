@@ -17,4 +17,5 @@
     <string name="textView5">Dario Alexander Paz</string>
     <string name="button3">To Return</string>
     <string name="aviso">The average of all subjects is</string>
+    <string name="error">The value of the note can not be greater than 5 or less than 0</string>
 </resources>
